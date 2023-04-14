@@ -13,8 +13,8 @@ btnEncrip.addEventListener("click",function(e){
 
 function encriptador(){
 let mensaje;
-console.log(vocales.find(texto[3]));
-//     for(let i=0; i<texto.length; i++){
+for(let i=0; i<texto.length; i++){
+    console.log(texto[i]);
 
-// }
+ }
 }

@@ -1,11 +1,12 @@
 *{
     margin:0;
     padding:0;
-
+    --blue:#F3F5FC;
+    --darkblue: rgba(46, 171, 243, 0.493);
 }
 body{
     padding-top: 2%;
-    background-color:#F3F5FC;
+    background-color:var(--blue);
     
 }
 
@@ -36,7 +37,7 @@ header img{
 }
 #principal div#frase textarea{
     
-    border:2px solid rgba(46, 171, 243, 0.493);
+    border:2px solid var(--darkblue);
     border-radius:10px;
     width: 80%;
     min-height: 50px;
