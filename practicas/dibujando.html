@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <canvas width="600" height="400">
+
+    </canvas>
+    <script>
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.fillStyle="grey";
+        pincel.fillRect(0,0,600,400);
+
+        
+    var puedoDibujar = false;
+    var colores = ['red','blue','green','purple'];
+    var color = "white";
+
+function dibujarCirculo(evento) {
+
+    if(puedoDibujar) {
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x, y, 5, 0, 2 * 3.14);
+        pincel.fill();
+    }
+
+}
+function dibujarCuadradoColor(x,y,color){
+    pincel.fillStyle=color;
+    pincel.fillRect(x,y,50,50);
+}
+
+function elegirColor(evento){
+    if((evento.pageX>0)&&(evento.pageX<50)&&(evento.pageY>0)&&(evento.pageY<50)){
+        color = colores[0];
+    }else{
+        if((evento.pageX>0)&&(evento.pageX<50)&&(evento.pageY>50)&&(evento.pageY<100)){
+        color = colores[1];
+    }else{
+        if((evento.pageX>0)&&(evento.pageX<50)&&(evento.pageY>100)&&(evento.pageY<150)){
+        color = colores[2];
+        }else{
+            if((evento.pageX>0)&&(evento.pageX<50)&&(evento.pageY>150)&&(evento.pageY<200)){
+            color = colores[3];
+        }
+        }
+    }
+    }
+}
+
+dibujarCuadradoColor(0,0,colores[0]);
+dibujarCuadradoColor(0,50,colores[1]);
+dibujarCuadradoColor(0,100,colores[2]);
+dibujarCuadradoColor(0,150,colores[3]);
+
+pincel.beginPath();
+pincel.fillStyle='white';
+pincel.font = "15px Gregoriat";
+pincel.fillText("Elija Color",0,220);
+
+pantalla.onmousemove = dibujarCirculo;
+
+function habilitarDibujar() {
+
+    puedoDibujar = true;
+}
+
+function deshabilitarDibujar() {
+
+    puedoDibujar = false;
+}
+
+pantalla.onmousedown = habilitarDibujar;
+
+pantalla.onmouseup = deshabilitarDibujar;
+
+pantalla.onclick = elegirColor;
+        
+
+    </script>
+</body>
+</html>
